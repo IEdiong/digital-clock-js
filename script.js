@@ -1,13 +1,17 @@
 // Selecting Elements
 const clock = document.querySelector(".clock");
 
-const locale = navigator.language;
+// Get configuration options
+const locale = "en-GB";
 const options = {
   second: "numeric",
   minute: "numeric",
   hour: "numeric",
 };
 
+// Update the UI
 setInterval(() => {
-  console.log(new Intl.DateTimeFormat(locale, options).format(new Date()));
+  let time = new Intl.DateTimeFormat(locale, options).format(new Date());
+  // console.log(time);
+  clock.textContent = time;
 }, 1000);
