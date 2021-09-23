@@ -10,20 +10,13 @@ const options = {
   hourCycle: "h12",
 };
 
-// Update the UI
-setInterval(() => {
-  // Test code starts here
-  // This portion of code is for testing purposes only
-  // let consoleTime = new Intl.DateTimeFormat("en-GB", {
-  //   second: "numeric",
-  //   minute: "numeric",
-  //   hour: "2-digit",
-  //   hour12: true,
-  //   hourCycle: "h12",
-  // }).format(new Date());
-  // console.log(consoleTime);
-  // test code ends here
+// Function to display clock
+const displayClockElement = (element, locale, options) => {
+  setInterval(() => {
+    let time = new Intl.DateTimeFormat(locale, options).format(new Date());
+    element.textContent = time;
+  }, 1000);
+};
 
-  let time = new Intl.DateTimeFormat(locale, options).format(new Date());
-  clock.textContent = time;
-}, 1000);
+// Update the UI
+displayClockElement(clock, locale, options);
