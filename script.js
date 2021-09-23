@@ -2,21 +2,23 @@
 const clock = document.querySelector(".clock");
 
 // Get configuration options
-const locale = "en-GB";
-const options = {
-  second: "numeric",
-  minute: "numeric",
-  hour: "2-digit",
-  hourCycle: "h12",
-};
+const config = [
+  "en-GB",
+  {
+    second: "numeric",
+    minute: "numeric",
+    hour: "2-digit",
+    hourCycle: "h12",
+  },
+];
 
 // Function to display clock
-const displayClockElement = (element, locale, options) => {
+const displayClockElement = (element, config) => {
   setInterval(() => {
-    let time = new Intl.DateTimeFormat(locale, options).format(new Date());
+    let time = new Intl.DateTimeFormat(...config).format(new Date());
     element.textContent = time;
   }, 1000);
 };
 
 // Update the UI
-displayClockElement(clock, locale, options);
+displayClockElement(clock, config);
